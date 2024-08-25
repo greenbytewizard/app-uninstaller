@@ -1,8 +1,8 @@
 Get-Process -Name "java" -ErrorAction SilentlyContinue | Stop-Process -Force
 
-$searchDirectory = "C:\Program Files"
+$searchDirectory = "C:\Program Files\JetBrains\PyCharm"
 
-# Recursively find all 'uninstall.exe' files within the search directory
+# 
 $uninstallers = Get-ChildItem -Path $searchDirectory -Recurse -Filter "uninstall.exe" -File -ErrorAction SilentlyContinue
 
 foreach ($uninstaller in $uninstallers) {
@@ -14,14 +14,14 @@ foreach ($uninstaller in $uninstallers) {
     }
 }
 
-# Define dynamic paths for PyCharm configuration directories
+# Dynamic path
 $userProfile = $env:USERPROFILE
 $pyCharmPaths = @(
     Join-Path -Path $userProfile -ChildPath "AppData\Local\JetBrains\PyCharm",
     Join-Path -Path $userProfile -ChildPath "AppData\Roaming\JetBrains\PyCharm"
 )
 
-# Remove PyCharm directories if they exist
+# Remove directories
 foreach ($path in $pyCharmPaths) {
     if (Test-Path -Path $path) {
         try {
