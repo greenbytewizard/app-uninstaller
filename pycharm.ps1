@@ -14,11 +14,11 @@ foreach ($uninstaller in $uninstallers) {
     }
 }
 
-# Dynamic path
+# Dynamic paths
 $userProfile = $env:USERPROFILE
 $pyCharmPaths = @(
-    Join-Path -Path $userProfile -ChildPath "AppData\Local\JetBrains\PyCharm",
-    Join-Path -Path $userProfile -ChildPath "AppData\Roaming\JetBrains\PyCharm"
+    (Join-Path -Path $userProfile -ChildPath "AppData\Local\JetBrains\PyCharm"),
+    (Join-Path -Path $userProfile -ChildPath "AppData\Roaming\JetBrains\PyCharm")
 )
 
 # Remove directories
