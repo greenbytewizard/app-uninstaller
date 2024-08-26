@@ -1,9 +1,8 @@
 Get-Process -Name "java" -ErrorAction SilentlyContinue | Stop-Process -Force
 
-$searchDirectory = "C:\Program Files\JetBrains\PyCharm"
+$searchDirectory = "C:\Program Files\JetBrains\PyCharm*\bin\Uninstall.exe"
 
-# 
-$uninstallers = Get-ChildItem -Path $searchDirectory -Recurse -Filter "uninstall.exe" -File -ErrorAction SilentlyContinue
+$uninstallers = Get-ChildItem -Path $searchDirectory -Recurse -Filter "Uninstall.exe" -File -ErrorAction SilentlyContinue
 
 foreach ($uninstaller in $uninstallers) {
     try {
@@ -14,11 +13,11 @@ foreach ($uninstaller in $uninstallers) {
     }
 }
 
-# Dynamic paths
-$userProfile = $env:USERPROFILE
 $pyCharmPaths = @(
-    (Join-Path -Path $userProfile -ChildPath "AppData\Local\JetBrains\PyCharm"),
-    (Join-Path -Path $userProfile -ChildPath "AppData\Roaming\JetBrains\PyCharm")
+    ("C:\ProgramData\Microsoft\Windows\Start Menu\Programs\JetBrains\PyCharm*"),
+    ("C:\Program Files\JetBrains\PyCharm*"),
+    ("C:\Users\*\AppData\Local\JetBrains\PyCharm*"),
+    ("C:\Users\*\AppData\Roaming\JetBrains\PyCharm*")
 )
 
 # Remove directories
