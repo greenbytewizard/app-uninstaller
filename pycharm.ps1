@@ -14,8 +14,8 @@ foreach ($uninstaller in $uninstallers) {
 }
 
 $pyCharmPaths = @(
-    ("C:\ProgramData\Microsoft\Windows\Start Menu\Programs\JetBrains\PyCharm*"),
     ("C:\Program Files\JetBrains\PyCharm*"),
+    ("C:\ProgramData\Microsoft\Windows\Start Menu\Programs\JetBrains\PyCharm*"),
     ("C:\Users\*\AppData\Local\JetBrains\PyCharm*"),
     ("C:\Users\*\AppData\Roaming\JetBrains\PyCharm*")
 )
